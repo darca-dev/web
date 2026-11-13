@@ -4,6 +4,12 @@ import { useState, useEffect } from "react";
 import { Menu, X, Sun, Moon } from "lucide-react";
 import { useTheme } from "./ThemeProvider";
 
+const navItems = ["Sobre Mí", "Experiencia", "Portafolio", "Habilidades", "Contacto"];
+
+function getNavId(item: string) {
+  return item === "Sobre Mí" ? "sobremí" : item.toLowerCase().replace(" ", "");
+}
+
 export default function Header() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -41,8 +47,8 @@ export default function Header() {
 
         {/* Desktop Menu */}
         <nav className="hidden md:flex gap-8 text-sm">
-          {["Sobre Mí", "Experiencia", "Portafolio", "Habilidades", "Contacto"].map((item) => {
-            const id = item === "Sobre Mí" ? "sobremí" : item.toLowerCase().replace(" ", "");
+          {navItems.map((item) => {
+            const id = getNavId(item);
             return (
               <ScrollLink
                 key={item}
@@ -80,8 +86,8 @@ export default function Header() {
       {/* Mobile Menu */}
       {open && (
         <div className="md:hidden bg-white/95 dark:bg-black/95 backdrop-blur-lg border-t border-gray-200 dark:border-white/10 text-center py-6">
-          {["Sobre Mí", "Experiencia", "Portafolio", "Habilidades", "Contacto"].map((item) => {
-            const id = item === "Sobre Mí" ? "sobremí" : item.toLowerCase().replace(" ", "");
+          {navItems.map((item) => {
+            const id = getNavId(item);
             return (
               <ScrollLink
                 key={item}

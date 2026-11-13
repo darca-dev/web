@@ -64,8 +64,6 @@ const skills = [
 ];
 
 export default function SkillsSection() {
-  const categories = Array.from(new Set(skills.map((skill) => skill.category)));
-
   return (
     <section id="habilidades" className="py-20 bg-gray-50 dark:bg-gray-950">
       <div className="max-w-7xl mx-auto px-6 md:px-10">

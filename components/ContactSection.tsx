@@ -119,7 +119,7 @@ export default function ContactSection() {
                   <div>
                     <p className="text-sm text-gray-500 dark:text-gray-400">Teléfono</p>
                     <a
-                      href="tel:+1234567890"
+                      href="tel:+524811541605"
                       className="text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition"
                     >
                       +52 (481) 154-1605

@@ -18,18 +18,18 @@ const projects = [
   },
   {
     id: 2,
-    title: "Portafolio Web",
-    description: "Portafolio profesional de alto rendimiento desarrollado con Next.js 14 y TypeScript, utilizando TailwindCSS para un diseño moderno y responsivo. Implementa modo oscuro/claro con persistencia de preferencias, animaciones fluidas mediante Framer Motion, navegación suave entre secciones, carousel interactivo para proyectos, y optimización SEO para mejor visibilidad en motores de búsqueda.",
-    image: "💼",
+    title: "Sitio Web Corporativo",
+    description: "Sitio web corporativo moderno desarrollado con Next.js 14 y TypeScript, enfocado en rendimiento, escalabilidad y experiencia de usuario. Implementa diseño responsivo con TailwindCSS, modo oscuro/claro con persistencia de preferencias, animaciones fluidas mediante Framer Motion, navegación optimizada entre secciones y estructura SEO avanzada para mejorar la visibilidad y presencia digital de la marca.",
+    image: "/infoanuncioshort.png",
     tags: ["Next.js", "TypeScript", "TailwindCSS"],
-    demo: "",
-    github: "https://github.com/arvtechv/portafolio",
+    demo: "https://www.arvtechstudio.com",
+    github: "",
   },
   {
     id: 3,
     title: "Snake Classic Revival",
     description: "Recreación moderna del clásico juego Snake desarrollada completamente en Flutter y Dart. Combina la nostalgia de los teléfonos móviles de los años 90 con mejoras contemporáneas en gráficos, controles táctiles optimizados, sistema de puntuación mejorado y una experiencia de juego fluida y adictiva que respeta la esencia del juego original.",
-    image: "🐍",
+    image: "/classicsnake.png",
     tags: ["Flutter", "Dart", "Games"],
     demo: "",
     github: "https://github.com/arvtechv/portafolio",
@@ -45,7 +45,7 @@ const projects = [
   },
   {
     id: 5,
-    title: "Nomad Manager",
+    title: "Punto Control",
     description: "Sistema completo de punto de venta (POS) desarrollado en Flutter con arquitectura multiplataforma. Diseñado para funcionar de manera nativa tanto en dispositivos móviles Android como en equipos de escritorio Windows y Linux. Enfocado en escalabilidad empresarial, rendimiento offline con sincronización automática, gestión de inventario, facturación electrónica y una experiencia de usuario intuitiva para operadores.",
     image: "/nomadmanager.png",
     tags: ["Flutter", "Desktop", "Android"],
@@ -78,16 +78,16 @@ const projects = [
     image: "/niddo.webp",
     tags: ["Flutter", "Dart", "Firebase"],
     demo: "",
-    github: "https://github.com/carvtechv/portafolio",
+    github: "https://github.com/arvtechv/portafolio",
   },
     {
     id: 9,
-    title: "Nomad Manager Desk",
-    description: "Version de escritorio de Nomad Manager, manejo de inventario y mas ",
+    title: "Punto Control Desk",
+    description: "Version de escritorio de Punto Control, manejo de inventario y mas ",
     image: "/nmDesk.png",
     tags: ["Flutter", "Dart", "Firebase"],
     demo: "",
-    github: "https://github.com/carvtechv/portafolio",
+    github: "https://github.com/arvtechv/portafolio",
   },
   {
   id: 10,
@@ -98,7 +98,26 @@ const projects = [
   demo: "", // puedes poner un video de YouTube o itch.io
   github: "https://github.com/carlosdelangel/carreras-kpop-unity",
   playstore: "", // cuando lo publiques
-}
+},
+    {
+    id: 11,
+    title: "Luna Segura iA",
+    description: "Asistente inteligente enfocada en seguridad, monitoreo y asistencia en tiempo real, diseñada para ofrecer una experiencia confiable, moderna y accesible. Combina inteligencia artificial avanzada con automatización inteligente para brindar alertas, análisis de información y soporte personalizado desde cualquier dispositivo.",
+    image: "/lunaseguraia.png",
+    tags: ["Flutter", "Dart", "Firebase"],
+    demo: "",
+    github: "https://github.com/arvtechv/portafolio",
+  },
+      {
+    id: 11,
+    title: "Luna Segura App",
+    description: "es una aplicación inteligente diseñada para brindar asistencia, monitoreo y automatización en tiempo real mediante inteligencia artificial. La plataforma combina una experiencia moderna e intuitiva con herramientas avanzadas de seguridad, análisis y comunicación, permitiendo a los usuarios acceder a información, recibir alertas y gestionar tareas desde cualquier dispositivo de forma rápida, segura y eficiente.",
+    image: "/appluna.png",
+    tags: ["Flutter", "Dart", "Firebase"],
+    demo: "https://luna-segura.vercel.app/",
+    github: "https://github.com/arvtechv/lunasegura-app/",
+  },
+
 ];
 
 export default function ProjectsSection() {

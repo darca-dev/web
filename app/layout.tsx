@@ -67,7 +67,7 @@ export default function RootLayout({
                 sameAs: [
                   "https://github.com/arvtechv",
                   "https://linkedin.com/in/carlosdelangel",
-                  "https://twitter.com/tuusuario", // Add your real Twitter if you have one
+                  "https://twitter.com/carlosdelangel",
                 ],
                 description: "Ingeniero en Sistemas y Desarrollador Full Stack especializado en React, Next.js y Flutter.",
               }),

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { Smartphone, Globe, Server, Gamepad2 } from "lucide-react";
+import { Smartphone, Globe, Server, Gamepad2, ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 
@@ -93,7 +93,7 @@ export default function AboutSection() {
               className="relative"
             >
               {/* Main UI/UX Container */}
-              <div className="relative w-full max-w-5xl h-96 bg-gray-900 rounded-2xl border-2 border-red-500 p-6 shadow-2xl overflow-hidden">
+              <div className="relative w-full max-w-5xl h-96 bg-gray-900 rounded-2xl border-2 border-red-500 p-6 shadow-2xl overflow-hidden group">
                 {/* UI/UX Elements inside - Animated Carousel */}
                 <div className="absolute inset-0 flex flex-col">
                   <AnimatePresence mode="wait">
@@ -149,7 +149,7 @@ export default function AboutSection() {
                   className="w-12 h-12 bg-gray-800 hover:bg-gray-700 rounded-lg flex items-center justify-center shadow-md hover:scale-105 transition-all active:scale-95"
                   aria-label="Anterior proyecto"
                 >
-                  <span className="text-white text-xl font-bold">←</span>
+                    <ChevronLeft className="text-white" size={20} />
                 </button>
                 
                 <button
@@ -157,7 +157,7 @@ export default function AboutSection() {
                   className={`w-12 h-12 ${isPaused ? 'bg-green-500' : 'bg-orange-500'} rounded-lg flex items-center justify-center shadow-md hover:scale-105 transition-all active:scale-95`}
                   aria-label={isPaused ? "Reanudar" : "Pausar"}
                 >
-                  <span className="text-white text-xl font-bold">{isPaused ? "▶" : "II"}</span>
+                    {isPaused ? <Play className="text-white" size={20} /> : <Pause className="text-white" size={20} />}
                 </button>
 
                 <button
@@ -165,7 +165,7 @@ export default function AboutSection() {
                   className="w-12 h-12 bg-gray-800 hover:bg-gray-700 rounded-lg flex items-center justify-center shadow-md hover:scale-105 transition-all active:scale-95"
                   aria-label="Siguiente proyecto"
                 >
-                  <span className="text-white text-xl font-bold">→</span>
+                    <ChevronRight className="text-white" size={20} />
                 </button>
               </div>
             </motion.div>

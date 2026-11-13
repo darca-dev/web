@@ -49,7 +49,7 @@ export default function Footer() {
           <div>
             <h3 className="text-white font-semibold mb-4">Enlaces Rápidos</h3>
             <ul className="space-y-2">
-              {["Sobre Mí", "Portafolio", "Habilidades", "Contacto"].map((item) => (
+              {["Sobre Mí", "Experiencia", "Portafolio", "Habilidades", "Contacto"].map((item) => (
                 <li key={item}>
                   <ScrollLink
                     to={item.toLowerCase().replace(" ", "")}

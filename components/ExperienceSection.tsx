@@ -134,7 +134,7 @@ export default function ExperienceSection() {
 
                   <ul
                     className={`space-y-2 text-gray-600 dark:text-gray-300 text-sm list-disc list-inside ${
-                      index % 2 === 0 ? "" : "md:list-none" /* list-none for right aligned usually looks better without bullets or custom bullets */
+                      index % 2 === 0 ? "" : "md:list-none"
                     }`}
                   >
                     {exp.description.map((item, i) => (
