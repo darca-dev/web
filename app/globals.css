@@ -1,6 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
 @import "tailwindcss";
 
+/* Tailwind 4: activa la variante dark: por clase (.dark en <html>),
+   que es lo que ThemeProvider alterna. Sin esta línea, dark: sigue la
+   preferencia del sistema operativo y el botón de tema no cambia nada. */
+@custom-variant dark (&:where(.dark, .dark *));
+
 html {
   scroll-behavior: smooth;
 }
