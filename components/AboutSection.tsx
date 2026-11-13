@@ -131,7 +131,7 @@ export default function AboutSection() {
                           </div>
                           <div className="flex items-center gap-2">
                             <div className="bg-green-500/20 px-3 py-1.5 rounded-full text-green-400 text-[10px] font-bold border border-green-500/30 whitespace-nowrap animate-pulse">
-                              ultimos proyectos , en desarrollo
+                              proyectos recientes
                             </div>
                             <div className="text-xl">🚀</div>
                           </div>
@@ -235,10 +235,10 @@ export default function AboutSection() {
               
               {/* Call to Action */}
               <motion.a
-                href="#portafolio"
+                href="/portfolio"
                 className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 font-semibold text-base md:text-lg mt-8 hover:gap-4 transition-all"
               >
-                Conoce Más Sobre Mí →
+                Conoce nuestros proyectos →
               </motion.a>
             </motion.div>
           </div>

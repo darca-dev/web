@@ -1,7 +1,8 @@
 import Header from "../components/Header";
 import HeroSection from "../components/HeroSection";
-import AboutSection from "../components/AboutSection";
-import ExperienceSection from "../components/ExperienceSection";
+import ProductsPreviewSection from "../components/ProductsPreviewSection";
+import ServicesPreviewSection from "../components/ServicesPreviewSection";
+import FounderSection from "../components/FounderSection";
 import ProjectsSection from "../components/ProjectsSection";
 import SkillsSection from "../components/SkillsSection";
 import ContactSection from "../components/ContactSection";
@@ -13,8 +14,9 @@ export default function Home() {
       <Header />
       <main className="min-h-screen">
         <HeroSection />
-        <AboutSection />
-        <ExperienceSection />
+        <ProductsPreviewSection />
+        <ServicesPreviewSection />
+        <FounderSection />
         <ProjectsSection />
         <SkillsSection />
         <ContactSection />

@@ -1,80 +1,62 @@
-Portafolio Profesional – Carlos del Ángel Ramírez
+# Arvtech Studio — Sitio oficial
 
-Portafolio moderno construido con Next.js 14, TypeScript, TailwindCSS y Framer Motion, con diseño minimalista, animaciones fluidas y soporte para modo oscuro/claro.
+Sitio web oficial de **Arvtech Studio** (https://www.arvtechstudio.com),
+evolucionado a partir del portafolio personal de Carlos del Ángel, fundador y
+desarrollador del estudio.
 
-🚀 Características
+Next.js 16 · TypeScript · TailwindCSS 4 · Framer Motion · Deploy en Vercel
 
-Diseño limpio y profesional
+## Estructura de rutas
 
-Modo oscuro/claro
+```
+/                              Inicio (hero, productos, servicios, fundador, proyectos, contacto)
+/products                      Catálogo de productos propios
+/products/skara                Skara Punto de Venta
+/products/skara/privacy        Política de privacidad de Skara
+/products/skara/support        Centro de soporte de Skara
+/products/skara/account-deletion  Eliminación de cuenta
+/services                      Servicios profesionales (7 categorías)
+/about                         Arvtech Studio + fundador + trayectoria
+/portfolio                     Portafolio con filtros por categoría
+/app-ads.txt                   Verificación AdMob (servido desde la raíz)
+/sitemap.xml · /robots.txt     SEO
+```
 
-Completamente responsive
+## Características
 
-Animaciones suaves con Framer Motion
+- Modo oscuro/claro con persistencia
+- Navegación responsive (menú móvil incluido)
+- Animaciones discretas con Framer Motion
+- Metadata SEO por página, canonical `https://www.arvtechstudio.com`
+- JSON-LD (Organization, WebSite, SoftwareApplication de Skara)
+- Datos estructurados y sitemap generados en build
 
-Optimizado con Next.js 14 (App Router)
+## Instalación
 
-Buen SEO y accesibilidad
-
-Código en TypeScript
-
-🛠️ Tecnologías
-
-Next.js 14
-
-TypeScript
-
-TailwindCSS
-
-Framer Motion
-
-Lucide Icons
-
-📦 Instalación
-git clone <repo>
-cd mi-portafolio1
+```powershell
 npm install
-npm run dev
+npm run dev     # http://localhost:3000
+npm run build   # compilación de producción
+npm run lint    # ESLint
+```
 
+## Estructura de carpetas
 
-Abrir: http://localhost:3000
+```
+app/                 Páginas (App Router) + layout, sitemap, robots
+components/          Componentes de UI y secciones
+lib/                 Datos compartidos (site.ts, projects.ts, services.ts)
+public/              Imágenes, app-ads.txt
+DEPLOYMENT.md        Procedimiento de despliegue con Vercel CLI (sin GitHub)
+```
 
-📁 Estructura Principal
-app/                # Layout y páginas
-components/         # Secciones del portafolio
-public/             # Imágenes y assets
-tailwind.config.js
-tsconfig.json
+## Despliegue
 
-🎨 Personalización Rápida
+Ver [DEPLOYMENT.md](./DEPLOYMENT.md). Resumen: `vercel login` → `vercel link`
+(proyecto existente) → `npm run build` → `vercel` (Preview) → revisar →
+`vercel --prod` **solo con aprobación**.
 
-HeroSection.tsx → Nombre, descripción y foto
+## Contacto
 
-AboutSection.tsx → Biografía
-
-ProjectsSection.tsx → Mis proyectos reales
-
-SkillsSection.tsx → Tecnologías
-
-ContactSection.tsx → Email / formulario
-
-Footer.tsx → Redes sociales
-
-layout.tsx → Título y descripción (SEO)
-
-🚀 Deploy con Vercel
-
-Sube tu repo a GitHub
-
-Ve a vercel.com
-
-Importa tu repositorio
-
-Click en Deploy
-
-Next.js se configura automáticamente.
-
-👨‍💻 Autor
-
-Carlos del Ángel Ramírez
-Desarrollador Full Stack — Next.js | React | Flutter | Blender 3D
+- Correo: arvtechv@gmail.com
+- Skara en Google Play: https://play.google.com/store/apps/details?id=com.ar.punto_venta

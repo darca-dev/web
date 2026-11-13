@@ -1,124 +1,55 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { ExternalLink, Github, ChevronLeft, ChevronRight, Smartphone } from "lucide-react";
+import {
+  ExternalLink,
+  ChevronLeft,
+  ChevronRight,
+  Smartphone,
+  ArrowRight,
+} from "lucide-react";
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { projects, statusStyles, type Project } from "../lib/projects";
 
-const projects = [
-  {
-    id: 1,
-    title: "Calculadora Flutter",
-    description: "Aplicación móvil de calculadora avanzada desarrollada en Flutter con un diseño elegante inspirado en iOS. Implementa operaciones matemáticas básicas (suma, resta, multiplicación, división), historial completo de operaciones con funcionalidades de edición y eliminación, asignación de títulos personalizados a operaciones guardadas, exportación de datos a dispositivos USB, y almacenamiento local eficiente utilizando Hive como base de datos NoSQL.",
-    image: "/calculadora.png", // Cambia "🧮" por la ruta de tu imagen: "/calculadora.jpg"
-    tags: ["Flutter", "Dart", "Hive"],
-    demo: "",
-    github: "https://github.com/carlosdelangel/calculadora-flutter",
-    playstore: "https://play.google.com/store/apps/details?id=com.ar.calculadora&pcampaignid=web_share",
-  },
-  {
-    id: 2,
-    title: "Sitio Web Corporativo",
-    description: "Sitio web corporativo moderno desarrollado con Next.js 14 y TypeScript, enfocado en rendimiento, escalabilidad y experiencia de usuario. Implementa diseño responsivo con TailwindCSS, modo oscuro/claro con persistencia de preferencias, animaciones fluidas mediante Framer Motion, navegación optimizada entre secciones y estructura SEO avanzada para mejorar la visibilidad y presencia digital de la marca.",
-    image: "/infoanuncioshort.png",
-    tags: ["Next.js", "TypeScript", "TailwindCSS"],
-    demo: "https://www.arvtechstudio.com",
-    github: "",
-  },
-  {
-    id: 3,
-    title: "Snake Classic Revival",
-    description: "Recreación moderna del clásico juego Snake desarrollada completamente en Flutter y Dart. Combina la nostalgia de los teléfonos móviles de los años 90 con mejoras contemporáneas en gráficos, controles táctiles optimizados, sistema de puntuación mejorado y una experiencia de juego fluida y adictiva que respeta la esencia del juego original.",
-    image: "/classicsnake.png",
-    tags: ["Flutter", "Dart", "Games"],
-    demo: "",
-    github: "https://github.com/arvtechv/portafolio",
-  },
-  {
-    id: 4,
-    title: "Comparador de Mercados",
-    description: "Aplicación móvil multiplataforma desarrollada en Flutter diseñada para ayudar a consumidores a comparar precios de productos entre diferentes establecimientos comerciales. Permite a comerciantes locales publicar productos con información detallada (texto descriptivo, imágenes de alta calidad), organización por categorías, y ofrece a los usuarios finales una interfaz intuitiva y limpia para encontrar las mejores ofertas en su área.",
-    image: "🛒",
-    tags: ["Flutter", "Firebase", "Mobile"],
-    demo: "",
-    github: "https://github.com/arvtechv/portafolio",
-  },
-  {
-    id: 5,
-    title: "Punto Control",
-    description: "Sistema completo de punto de venta (POS) desarrollado en Flutter con arquitectura multiplataforma. Diseñado para funcionar de manera nativa tanto en dispositivos móviles Android como en equipos de escritorio Windows y Linux. Enfocado en escalabilidad empresarial, rendimiento offline con sincronización automática, gestión de inventario, facturación electrónica y una experiencia de usuario intuitiva para operadores.",
-    image: "/nomadmanager.png",
-    tags: ["Flutter", "Desktop", "Android"],
-    demo: "",
-    github: "https://github.com/carlosdelangel/punto-venta",
-    playstore: "https://play.google.com/store/apps/details?id=com.ar.punto_venta&pcampaignid=web_share",
-  },
-  {
-    id: 6,
-    title: "Login Flutter",
-    description: "Módulo de autenticación robusto desarrollado en Flutter integrado con Firebase Authentication. Implementa una pantalla de inicio de sesión con diseño moderno, validación de formularios en tiempo real, manejo seguro de credenciales, recuperación de contraseña, y una arquitectura modular que facilita el mantenimiento, escalabilidad y reutilización en múltiples proyectos.",
-    image: "/login.webp",
-    tags: ["Flutter", "Firebase Auth", "UI/UX"],
-    demo: "",
-    github: "https://github.com/arvtechv/portafolio",
-  },
-  {
-    id: 7,
-    title: "Spa Serenity",
-    description: "Embudo de conversión web completo desarrollado para un centro de bienestar y spa, enfocado en el agendamiento automático de citas. Construido con tecnologías web tradicionales (HTML5, CSS3, PHP y MySQL) que guían estratégicamente al usuario desde el interés inicial hasta la conversión final. Ofrece una experiencia de usuario responsiva, optimizada para dispositivos móviles, con diseño centrado en la acción y maximización de tasas de conversión.",
-    image: "/spa.jpg",
-    tags: ["PHP", "MySQL", "HTML/CSS"],
-    demo: "",
-    github: "https://github.com/arvtechv/portafolio",
-  },
-  {
-    id: 8,
-    title: "Niddo App",
-    description: "Aplicación móvil educativa en desarrollo para gestión y control de estudiantes de nivel preescolar y primaria. Desarrollada en Flutter y Dart, similar a LiveKid, permite a instituciones educativas gestionar asistencia, comunicaciones con padres de familia, reportes académicos, actividades diarias y seguimiento del progreso estudiantil. Incluye perfiles diferenciados para directores, maestros y padres, con notificaciones en tiempo real y almacenamiento seguro de datos.",
-    image: "/niddo.webp",
-    tags: ["Flutter", "Dart", "Firebase"],
-    demo: "",
-    github: "https://github.com/arvtechv/portafolio",
-  },
-    {
-    id: 9,
-    title: "Punto Control Desk",
-    description: "Version de escritorio de Punto Control, manejo de inventario y mas ",
-    image: "/nmDesk.png",
-    tags: ["Flutter", "Dart", "Firebase"],
-    demo: "",
-    github: "https://github.com/arvtechv/portafolio",
-  },
-  {
-  id: 10,
-  title: "Carreras K-POP",
-  description: "Videojuego de carreras estilo endless runner desarrollado en Unity, ambientado en un universo visual inspirado en el K-POP. El jugador controla a un personaje idol que corre a gran velocidad por escenarios dinámicos con obstáculos, rampas y coleccionables. El juego implementa generación procedural de pistas, sistema de carriles (izquierda, centro y derecha), físicas optimizadas para dispositivos móviles, animaciones integradas mediante Mixamo, sistema de puntuación y monedas, aumento progresivo de dificultad y una estética colorida con efectos visuales sincronizados al ritmo musical. Proyecto enfocado en optimización, gameplay fluido y experiencia arcade.",
-  image: "/ckpop.png", 
-  tags: ["Unity", "C#", "Game Development", "Endless Runner", "Mobile Game"],
-  demo: "", // puedes poner un video de YouTube o itch.io
-  github: "https://github.com/carlosdelangel/carreras-kpop-unity",
-  playstore: "", // cuando lo publiques
-},
-    {
-    id: 11,
-    title: "Luna Segura iA",
-    description: "Asistente inteligente enfocada en seguridad, monitoreo y asistencia en tiempo real, diseñada para ofrecer una experiencia confiable, moderna y accesible. Combina inteligencia artificial avanzada con automatización inteligente para brindar alertas, análisis de información y soporte personalizado desde cualquier dispositivo.",
-    image: "/lunaseguraia.png",
-    tags: ["Flutter", "Dart", "Firebase"],
-    demo: "",
-    github: "https://github.com/arvtechv/portafolio",
-  },
-      {
-    id: 11,
-    title: "Luna Segura App",
-    description: "es una aplicación inteligente diseñada para brindar asistencia, monitoreo y automatización en tiempo real mediante inteligencia artificial. La plataforma combina una experiencia moderna e intuitiva con herramientas avanzadas de seguridad, análisis y comunicación, permitiendo a los usuarios acceder a información, recibir alertas y gestionar tareas desde cualquier dispositivo de forma rápida, segura y eficiente.",
-    image: "/appluna.png",
-    tags: ["Flutter", "Dart", "Firebase"],
-    demo: "https://luna-segura.vercel.app/",
-    github: "https://github.com/arvtechv/lunasegura-app/",
-  },
-
-];
+function ProjectLinks({ project }: { project: Project }) {
+  return (
+    <div className="flex flex-wrap gap-4">
+      {project.internal && (
+        <Link
+          href={project.internal}
+          className="flex items-center gap-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition"
+        >
+          <ArrowRight size={18} />
+          <span className="text-sm">Ver página</span>
+        </Link>
+      )}
+      {project.demo && (
+        <a
+          href={project.demo}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition"
+        >
+          <ExternalLink size={18} />
+          <span className="text-sm">Demo</span>
+        </a>
+      )}
+      {project.playstore && (
+        <a
+          href={project.playstore}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-2 text-gray-700 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400 transition"
+        >
+          <Smartphone size={18} />
+          <span className="text-sm">Play Store</span>
+        </a>
+      )}
+    </div>
+  );
+}
 
 export default function ProjectsSection() {
   const [currentPage, setCurrentPage] = useState(0);
@@ -152,10 +83,11 @@ export default function ProjectsSection() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-            Proyectos
+            Proyectos destacados
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            Algunos de mis trabajos recientes que demuestran mi experiencia en desarrollo web y móvil.
+            Productos propios, trabajos para clientes, prototipos y experimentos
+            que demuestran nuestra experiencia en desarrollo.
           </p>
         </motion.div>
 
@@ -192,7 +124,7 @@ export default function ProjectsSection() {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -50 }}
                   transition={{ duration: 0.3, delay: index * 0.1 }}
-                  className="group bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-200 dark:border-gray-700"
+                  className="group bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-200 dark:border-gray-700 flex flex-col"
                 >
                   <div className="relative h-48 bg-gradient-to-br from-blue-500/20 to-purple-500/20 dark:from-blue-500/10 dark:to-purple-500/10 overflow-hidden">
                     {project.image.startsWith("/") ? (
@@ -209,13 +141,23 @@ export default function ProjectsSection() {
                       </div>
                     )}
                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors" />
+                    <span
+                      className={`absolute top-3 right-3 px-2.5 py-1 text-[11px] font-semibold rounded-full ${statusStyles[project.status]}`}
+                    >
+                      {project.status}
+                    </span>
                   </div>
 
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
-                      {project.title}
-                    </h3>
-                    <p className="text-gray-600 dark:text-gray-400 mb-4 text-sm line-clamp-3">
+                  <div className="p-6 flex flex-col flex-1">
+                    <div className="flex items-center gap-2 mb-2">
+                      <h3 className="text-xl font-bold text-gray-900 dark:text-white">
+                        {project.title}
+                      </h3>
+                    </div>
+                    <span className="text-xs font-medium text-gray-400 dark:text-gray-500 uppercase tracking-wide mb-2">
+                      {project.category}
+                    </span>
+                    <p className="text-gray-600 dark:text-gray-400 mb-4 text-sm line-clamp-3 flex-1">
                       {project.description}
                     </p>
 
@@ -230,39 +172,7 @@ export default function ProjectsSection() {
                       ))}
                     </div>
 
-                    <div className="flex gap-4">
-                      {project.demo && (
-                        <a
-                          href={project.demo}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center gap-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition"
-                        >
-                          <ExternalLink size={18} />
-                          <span className="text-sm">Demo</span>
-                        </a>
-                      )}
-                      {project.playstore && (
-                        <a
-                          href={project.playstore}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center gap-2 text-gray-700 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400 transition"
-                        >
-                          <Smartphone size={18} />
-                          <span className="text-sm">Play Store</span>
-                        </a>
-                      )}
-                      <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition"
-                      >
-                        <Github size={18} />
-                        <span className="text-sm">GitHub</span>
-                      </a>
-                    </div>
+                    <ProjectLinks project={project} />
                   </div>
                 </motion.div>
               ))}
@@ -289,11 +199,20 @@ export default function ProjectsSection() {
 
           {/* Project Counter */}
           <div className="text-center mt-4 text-sm text-gray-500 dark:text-gray-400">
-            Mostrando {startIndex + 1}-{Math.min(endIndex, projects.length)} de {projects.length} proyectos
+            Mostrando {startIndex + 1}-{Math.min(endIndex, projects.length)} de{" "}
+            {projects.length} proyectos
           </div>
+        </div>
+
+        <div className="text-center mt-10">
+          <Link
+            href="/portfolio"
+            className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 font-semibold hover:gap-4 transition-all"
+          >
+            Ver el portafolio completo <ArrowRight size={18} />
+          </Link>
         </div>
       </div>
     </section>
   );
 }
-
