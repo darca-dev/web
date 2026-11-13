@@ -13,38 +13,38 @@ export default function ContactSection() {
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error" | "unconfigured">("idle");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitStatus("idle");
 
-    try {
-      // Reemplaza estos valores con tus credenciales de EmailJS
-      // O mejor aún, usa variables de entorno: process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID
-      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "service_id";
-      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "template_id";
-      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "public_key";
+    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
 
-      // Verifica si las credenciales están configuradas
-      if (serviceId === "service_id" && publicKey === "public_key") {
-        console.warn("EmailJS no está configurado. Revisa el archivo .env.local");
-        // Simulación para desarrollo si no hay keys
-        await new Promise((resolve) => setTimeout(resolve, 1000));
-      } else {
-        await emailjs.send(
-          serviceId,
-          templateId,
-          {
-            from_name: formData.name,
-            from_email: formData.email,
-            message: formData.message,
-            to_name: "Carlos del Ángel", // Tu nombre
-          },
-          publicKey
-        );
-      }
+    // Si EmailJS no está configurado, NO simulamos un envío exitoso.
+    // Se informa al usuario y se ofrece un canal de contacto real.
+    if (!serviceId || !templateId || !publicKey) {
+      console.warn("EmailJS no está configurado. Revisa las variables de entorno.");
+      setSubmitStatus("unconfigured");
+      setIsSubmitting(false);
+      return;
+    }
+
+    try {
+      await emailjs.send(
+        serviceId,
+        templateId,
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
+          to_name: "Arvtech Studio",
+        },
+        publicKey
+      );
 
       setSubmitStatus("success");
       setFormData({ name: "", email: "", message: "" });
@@ -104,10 +104,10 @@ export default function ContactSection() {
                   <div>
                     <p className="text-sm text-gray-500 dark:text-gray-400">Email</p>
                     <a
-                      href="mailto:contacto@carlosdelangel.com"
+                      href="mailto:arvtechv@gmail.com"
                       className="text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition"
                     >
-                      contacto@carlosdelangel.com
+                      arvtechv@gmail.com
                     </a>
                   </div>
                 </div>
@@ -231,13 +231,38 @@ export default function ContactSection() {
               </motion.p>
             )}
 
+            {submitStatus === "unconfigured" && (
+              <motion.p
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="text-amber-600 dark:text-amber-400 text-sm text-center"
+              >
+                El formulario no está disponible en este momento. Escríbeme directo a{" "}
+                <a
+                  href="mailto:arvtechv@gmail.com"
+                  className="underline font-medium"
+                >
+                  arvtechv@gmail.com
+                </a>
+                .
+              </motion.p>
+            )}
+
             {submitStatus === "error" && (
               <motion.p
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 className="text-red-600 dark:text-red-400 text-sm text-center"
               >
-                Hubo un error al enviar el mensaje. Por favor, intenta de nuevo.
+                Hubo un error al enviar el mensaje. Por favor, intenta de nuevo o
+                escríbeme a{" "}
+                <a
+                  href="mailto:arvtechv@gmail.com"
+                  className="underline font-medium"
+                >
+                  arvtechv@gmail.com
+                </a>
+                .
               </motion.p>
             )}
           </motion.form>
