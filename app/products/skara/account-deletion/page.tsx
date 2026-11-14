@@ -159,10 +159,7 @@ export default function SkaraAccountDeletionPage() {
               <p className="mt-4 text-sm text-gray-500 dark:text-gray-400">
                 Únicamente podrían conservarse registros mínimos si una
                 obligación legal lo exige, limitándose a lo estrictamente
-                necesario.{" "}
-                <mark className="bg-amber-100 text-amber-900 dark:bg-amber-900/50 dark:text-amber-100 px-1 rounded">
-                  Párrafo pendiente de validación antes de publicar.
-                </mark>
+                necesario.
               </p>
             </section>
 

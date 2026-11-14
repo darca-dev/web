@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { AlertTriangle, Mail } from "lucide-react";
+import { Mail } from "lucide-react";
 import PageHero from "../../../../components/PageHero";
 import Header from "../../../../components/Header";
 import Footer from "../../../../components/Footer";
@@ -38,14 +38,6 @@ function Section({
   );
 }
 
-function ReviewMark({ children }: { children: React.ReactNode }) {
-  return (
-    <mark className="bg-amber-100 text-amber-900 dark:bg-amber-900/50 dark:text-amber-100 px-1 rounded">
-      {children}
-    </mark>
-  );
-}
-
 export default function SkaraPrivacyPage() {
   return (
     <>
@@ -59,29 +51,11 @@ export default function SkaraPrivacyPage() {
               <span className="text-blue-600 dark:text-blue-400">privacidad</span>
             </>
           }
-          description="Skara Punto de Venta — última actualización: 12 de noviembre de 2026."
+          description="Skara Punto de Venta — última actualización: 14 de noviembre de 2026."
         />
 
         <div className="py-16 bg-white dark:bg-gray-900">
           <div className="max-w-3xl mx-auto px-6 md:px-10">
-            {/* Aviso de revisión */}
-            <div className="mb-10 p-5 rounded-xl border border-amber-300 dark:border-amber-700 bg-amber-50 dark:bg-amber-900/20 flex items-start gap-3">
-              <AlertTriangle
-                size={22}
-                className="text-amber-600 dark:text-amber-400 shrink-0 mt-0.5"
-              />
-              <div className="text-sm text-amber-900 dark:text-amber-100">
-                <strong className="font-semibold">
-                  Borrador pendiente de revisión.
-                </strong>{" "}
-                Este contenido se redactó a partir del código verificado de la
-                aplicación. Los puntos marcados en{" "}
-                <ReviewMark>amarillo</ReviewMark> deben contrastarse con el
-                documento de privacidad original y con el desarrollador antes de
-                publicar.
-              </div>
-            </div>
-
             {/* 1. Responsable */}
             <Section title="1. Responsable del tratamiento">
               <p>
@@ -131,11 +105,10 @@ export default function SkaraPrivacyPage() {
                 dispositivo</strong> y permiten usar Skara sin conexión.
               </p>
               <p>
-                <ReviewMark>
-                  Pendiente de confirmar: verificar con el desarrollador si,
-                  en alguna función publicada, estos datos del negocio también
-                  se sincronizan con la nube.
-                </ReviewMark>
+                Estos datos <strong>no se sincronizan con la nube</strong>:
+                permanecen en tu dispositivo. Si inicias sesión, únicamente se
+                sincronizan con tu cuenta tu <strong>perfil</strong> y tu{" "}
+                <strong>suscripción</strong>.
               </p>
 
               <h3 className="font-semibold text-gray-900 dark:text-white">
@@ -331,11 +304,9 @@ export default function SkaraPrivacyPage() {
                 solicitas la eliminación de la cuenta.
               </p>
               <p>
-                <ReviewMark>
-                  Pendiente de revisión: únicamente podrían conservarse
-                  registros mínimos si una obligación legal lo exige; este
-                  párrafo debe validarse antes de publicar.
-                </ReviewMark>
+                Únicamente podrían conservarse registros mínimos si una
+                obligación legal lo exige, limitándose a lo estrictamente
+                necesario.
               </p>
             </Section>
 
