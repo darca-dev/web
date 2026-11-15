@@ -1,6 +1,6 @@
 "use client";
 
-import { Linkedin, Mail, Twitter, Smartphone } from "lucide-react";
+import { Linkedin, Mail, Smartphone } from "lucide-react";
 import Link from "next/link";
 import { CONTACT_EMAIL, PHONE_DISPLAY, PHONE_HREF, SKARA_PLAY_URL } from "../lib/site";
 
@@ -24,11 +24,6 @@ const socialLinks = [
     name: "LinkedIn",
     icon: Linkedin,
     href: "https://linkedin.com/in/carlosdart",
-  },
-  {
-    name: "Twitter",
-    icon: Twitter,
-    href: "https://twitter.com/carlosdelangel",
   },
   {
     name: "Email",
