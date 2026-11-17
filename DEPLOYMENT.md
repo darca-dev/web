@@ -70,7 +70,11 @@ vercel project ls
 ## 4. Variables de entorno
 
 El sitio funciona sin variables de entorno. Solo son necesarias si quieres
-activar el formulario de contacto con EmailJS:
+activar el formulario de contacto con EmailJS.
+
+> **Decisión de lanzamiento (P0-4, 17 nov 2026):** se lanza con el fallback
+> honesto del formulario (aviso + correo directo, sin variables). Activar
+> EmailJS es opcional y posterior al lanzamiento.
 
 | Variable | Descripción | Estado |
 |---|---|---|
